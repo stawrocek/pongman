@@ -45,6 +45,5 @@ public class ConnectToServer : MonoBehaviour {
 		if (GUI.Button (GameManager.getShrekt(5, 4), "Return")) {
 			Application.LoadLevel("MainMenu");
 		}
-		
 	}
 }
