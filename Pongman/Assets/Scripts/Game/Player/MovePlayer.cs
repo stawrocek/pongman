@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
+
 
 public class MovePlayer : MonoBehaviour {
 
@@ -23,17 +25,17 @@ public class MovePlayer : MonoBehaviour {
 		}
 		else if(Input.GetKey(KeyCode.DownArrow))
 		{
-			transform.Translate (0, 0, Time.deltaTime*moveSpeed);
+			transform.Translate (0, 0, -Time.deltaTime*moveSpeed);
 		}
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
-			//transform.Translate (-Time.deltaTime*moveSpeed, 0, 0);
-			transform.Rotate (0, -rotateSpeed * Time.deltaTime, 0);
+			transform.Translate (-Time.deltaTime*moveSpeed, 0, 0);
+			//transform.Rotate (0, -rotateSpeed * Time.deltaTime, 0);
 		}
 		else if(Input.GetKey(KeyCode.RightArrow))
 		{
-			//transform.Translate (Time.deltaTime*moveSpeed, 0, 0);
-			transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
+			transform.Translate (Time.deltaTime*moveSpeed, 0, 0);
+			//transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
 		}
 	}
 }
