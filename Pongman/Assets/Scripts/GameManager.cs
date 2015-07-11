@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 		            BUTTON_HEIGHT);
 	} 
 
-	static public Rect getShrekt(int idxRow, int idxColumn, int scaleWidth, int scaleHeight)    //adds rectangular widget into 'table' defined by ROWSxCOLUMNS on position [idxROWxidxColumn]
+	static public Rect getShrekt(int idxRow, int idxColumn, float scaleWidth, float scaleHeight)    //adds rectangular widget into 'table' defined by ROWSxCOLUMNS on position [idxROWxidxColumn]
 	{ 
 		int TOTAL_HEIGHT = (COLUMNS-1)*SPACER_COL + COLUMNS * BUTTON_HEIGHT;
 		int TOTAL_WIDTH = (ROWS-1)*SPACER_ROW + ROWS * (BUTTON_WIDTH);
@@ -67,16 +67,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	static public void drawBoxAroundScene(Color color){
-		drawQuad (new Rect (Screen.width/2-ROWS*BUTTON_WIDTH/2 - (ROWS-1)*SPACER_ROW/2,
+		drawQuad (new Rect (Screen.width/2-ROWS*BUTTON_WIDTH/2 - (ROWS-1)*SPACER_ROW/2 - 2,
 		                    Screen.height/2-COLUMNS*BUTTON_HEIGHT/2 - (COLUMNS-1)*SPACER_COL/2 - 2,
 		                    ROWS*BUTTON_WIDTH+(ROWS-1)*SPACER_ROW + 4,
 		                    COLUMNS*BUTTON_HEIGHT+(COLUMNS-1)*SPACER_COL+4), color);
 	}
 
 	static public void drawBorderAroundScene(Color color, int size){
-		drawQuad (new Rect (Screen.width/2-ROWS*BUTTON_WIDTH/2 - (ROWS-1)*SPACER_ROW/2 - size,
-		                    Screen.height/2-COLUMNS*BUTTON_HEIGHT/2 - (COLUMNS-1)*SPACER_COL/2 - size,
-		                    ROWS*BUTTON_WIDTH+(ROWS-1)*SPACER_ROW + size*2,
-		                    COLUMNS*BUTTON_HEIGHT+(COLUMNS-1)*SPACER_COL + size*2), color);
+		drawQuad (new Rect (Screen.width/2-ROWS*BUTTON_WIDTH/2 - (ROWS-1)*SPACER_ROW/2 - size - 2,
+		                    Screen.height/2-COLUMNS*BUTTON_HEIGHT/2 - (COLUMNS-1)*SPACER_COL/2 - size - 2,
+		                    ROWS*BUTTON_WIDTH+(ROWS-1)*SPACER_ROW + size*2 + 4,
+		                    COLUMNS*BUTTON_HEIGHT+(COLUMNS-1)*SPACER_COL + size*2 + 4), color);
 	}
 }
