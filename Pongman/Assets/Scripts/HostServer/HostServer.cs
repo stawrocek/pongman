@@ -18,14 +18,14 @@ public class HostServer : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+		/*GUI.skin.label.alignment = TextAnchor.MiddleCenter;
 		GUI.Label (GameManager.getShrekt (4, 0), "Server Setup");
 		if (GUI.Button (GameManager.getShrekt(4, 2), "Host!")) {
 			Application.LoadLevel("Pongman");
 		}
 		if (GUI.Button (GameManager.getShrekt(4, 3), "Return")) {
 			Application.LoadLevel("MainMenu");
-		}
+		}*/
 		
 	}
 }

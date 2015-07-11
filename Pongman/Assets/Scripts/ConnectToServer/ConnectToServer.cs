@@ -30,7 +30,7 @@ public class ConnectToServer : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+		/*GUI.skin.label.alignment = TextAnchor.MiddleCenter;
 		GUI.Label (GameManager.getShrekt (5, 0), "Client Setup");
 		ipAdress = GUI.TextField (GameManager.getShrekt (5, 2), ipAdress, 25);
 		if (validIp ()) {
@@ -44,6 +44,6 @@ public class ConnectToServer : MonoBehaviour {
 		}
 		if (GUI.Button (GameManager.getShrekt(5, 4), "Return")) {
 			Application.LoadLevel("MainMenu");
-		}
+		}*/
 	}
 }
