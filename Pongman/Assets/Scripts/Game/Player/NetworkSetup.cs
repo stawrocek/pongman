@@ -5,9 +5,6 @@ using UnityEngine.Networking;
 public class NetworkSetup : NetworkBehaviour {
 
 	public void translateToSpawn(){
-		/*if (GameManager.userName == "stawrocek") {
-			transform.position = GameObject.Find("SpawnSouth").transform.position;
-		}*/
 		if (!isLocalPlayer)
 			return;
 
@@ -40,7 +37,7 @@ public class NetworkSetup : NetworkBehaviour {
 			GetComponent<PlayerSyncName>().changeRealName(GameManager.userName);
 
 			//tutaj
-			translateToSpawn();
+			//translateToSpawn();
 		}
 	}
 
@@ -48,7 +45,7 @@ public class NetworkSetup : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(time);
 		if(GameManager.maximumNumberOfPlayersConnected==GameManager.connectedPlayers)
-		translateToSpawn ();
+		//translateToSpawn ();
 
 		Debug.Log ("Courutine!!!");
 	}
@@ -67,10 +64,10 @@ public class NetworkSetup : NetworkBehaviour {
 	{
 		Debug.Log ("NetworkBehaviour::OnSTartLocalPlayer");
 		//Debug.Log ("on start local player " + isLocalPlayer);
-		if (isLocalPlayer) {
+		/*if (isLocalPlayer) {
 			Debug.Log ("exec courutine");
-			StartCoroutine (ExecuteAfterTime (0.5f));
-		}
+			//StartCoroutine (ExecuteAfterTime (0.5f));
+		}*/
 		base.OnStartLocalPlayer ();
 	}
 
