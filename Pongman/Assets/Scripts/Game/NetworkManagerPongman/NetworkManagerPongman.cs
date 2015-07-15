@@ -14,7 +14,7 @@ public class NetworkManagerPongman : NetworkManager {
 		}
 		Debug.Log ("Spawning player known as " + GameManager.userName + " on the server!!!");
 		GameObject player = (GameObject)GameObject.Instantiate(playerPrefab, 
-		        new Vector3(Random.Range(-24, 24), 0, Random.Range(-24, 24))
+		        new Vector3(Random.Range(-24, 24), .5f, Random.Range(-24, 24))
 		                                                       , Quaternion.identity);
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 

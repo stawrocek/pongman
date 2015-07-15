@@ -5,9 +5,13 @@ using UnityEngine.Networking;
 
 public class MovePlayer : MonoBehaviour {
 
-	public float moveSpeed = 10f;
+	public float moveSpeed = 10f;         
 	public float rotateSpeed = 50f;
 	Color[] colorArray = new Color[] {Color.black, Color.white, Color.red, Color.green, Color.yellow};
+
+	int netID=-10;
+
+	GameObject camera;
 
 	public void moveOnlyInWaiting(){
 		if(Input.GetKey(KeyCode.UpArrow))
@@ -29,18 +33,50 @@ public class MovePlayer : MonoBehaviour {
 	}
 
 	public void moveOnlyInGame(){
-
+		//Debug.Log ("game!!! " + netID.ToString ());
+		if(netID==-10)return;
+		if(Input.GetKey(KeyCode.LeftArrow))
+		{
+			if(netID==1){
+				transform.Translate (0, 0, moveSpeed*Time.deltaTime);
+				camera.transform.Translate(0, 0, moveSpeed*Time.deltaTime, Space.World);
+			}
+			if(netID==2){
+				transform.Translate (0, 0, -moveSpeed*Time.deltaTime);
+				camera.transform.Translate(0, 0, -moveSpeed*Time.deltaTime, Space.World);
+			}
+			if(netID==3){
+				transform.Translate (moveSpeed*Time.deltaTime, 0, 0);
+				camera.transform.Translate(moveSpeed*Time.deltaTime, 0, 0, Space.World);
+			}
+			if(netID==4){
+				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0);
+				camera.transform.Translate(-moveSpeed*Time.deltaTime, 0, 0, Space.World);
+			}
+		}
+		else if(Input.GetKey(KeyCode.RightArrow))
+		{
+			if(netID==1){
+				transform.Translate (0, 0, -moveSpeed*Time.deltaTime);
+				camera.transform.Translate(0, 0, -moveSpeed*Time.deltaTime, Space.World);
+			}
+			if(netID==2){
+				transform.Translate (0, 0, moveSpeed*Time.deltaTime);
+				camera.transform.Translate(0, 0, moveSpeed*Time.deltaTime, Space.World);
+			}
+			if(netID==3){
+				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0);
+				camera.transform.Translate(-moveSpeed*Time.deltaTime, 0, 0, Space.World);
+			}
+			if(netID==4){
+				transform.Translate (moveSpeed*Time.deltaTime, 0, 0);
+				camera.transform.Translate(moveSpeed*Time.deltaTime, 0, 0, Space.World);
+			}
+		}
+		//camera.transform.LookAt
 	}
 
-	void Update () {
-		if (GameManager.gameState == GameManager.playingGame) {
-			moveOnlyInGame();	
-		} 
-		else if (GameManager.gameState == GameManager.waitingForConnections) {
-			moveOnlyInWaiting();
-		}
-
-
+	public void moveInBoth(){
 		if(Input.GetKey(KeyCode.Alpha1))
 		{
 			GetComponent<PlayerSyncColor>().changeRealColor(colorArray[0]);
@@ -78,5 +114,25 @@ public class MovePlayer : MonoBehaviour {
 				allplayers[i].GetComponent<NetworkSetup>().dispNetId();
 			}
 		}
+	}
+
+	public void setNetId(int _netID){
+		netID = _netID;
+		//Debug.Log ("new net id= " + netID);
+	}
+
+	void Start(){
+		camera = GameObject.Find ("MainCamera");
+	}
+
+	void Update () {
+		if (GameManager.gameState == GameManager.playingGame) {
+			moveOnlyInGame();	
+		} 
+		else if (GameManager.gameState == GameManager.waitingForConnections) {
+			moveOnlyInWaiting();
+		}
+
+		moveInBoth ();
 	}
 }

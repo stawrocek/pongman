@@ -59,7 +59,8 @@ public class GameStates : NetworkBehaviour {
 				GameManager.gameState = GameManager.playingGame;
 				GetComponent<NetworkSetup>().translateToSpawn();
 				camera.GetComponent<CameraScript>().setTrackingMode(true, (int)netId.Value);
-
+				//Debug.Log ("ehh netid= " + ((int)netId.Value).ToString());
+				GetComponent<MovePlayer>().setNetId((int)netId.Value);
 			}
 		}
 	}
