@@ -8,7 +8,7 @@ public class ConnectToServer : MonoBehaviour {
 	const int BUTTON_HEIGHT = 50;
 	const int SPACER_HEIGHT = 50;
 	Color darkBlue = new Color (0, 51f/255f, 102f/255f);
-	Color lightYellow = new Color(238f/255f,221f/255f,130f/255f);
+	//Color lightYellow = new Color(238f/255f,221f/255f,130f/255f);
 	string ipAdress="";
 
 	public bool validIp(){
@@ -17,7 +17,8 @@ public class ConnectToServer : MonoBehaviour {
 	}
 
 	public void connect(){
-	
+		GameManager.serverIP = ipAdress;
+		Application.LoadLevel("Pongman");
 	}
 
 	// Use this for initialization
@@ -27,7 +28,7 @@ public class ConnectToServer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 
 	void OnGUI() {

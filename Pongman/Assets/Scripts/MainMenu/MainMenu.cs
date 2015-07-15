@@ -4,7 +4,7 @@ using System.Collections;
 public class MainMenu : MonoBehaviour {
 
 	Color darkBlue = new Color (0, 51f/255f, 102f/255f);
-	Color lightYellow = new Color(238f/255f,221f/255f,130f/255f);
+	//Color lightYellow = new Color(238f/255f,221f/255f,130f/255f);
 
 	// Use this for initialization
 	void Start () {

@@ -9,7 +9,7 @@ public class MovePlayer : MonoBehaviour {
 	public float rotateSpeed = 50f;
 	Color[] colorArray = new Color[] {Color.black, Color.white, Color.red, Color.green, Color.yellow};
 
-	void Update () {
+	public void moveOnlyInWaiting(){
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			transform.Translate (0, 0, Time.deltaTime*moveSpeed);
@@ -26,8 +26,22 @@ public class MovePlayer : MonoBehaviour {
 		{
 			transform.Translate (Time.deltaTime*moveSpeed, 0, 0);
 		}
+	}
 
-		else if(Input.GetKey(KeyCode.Alpha1))
+	public void moveOnlyInGame(){
+
+	}
+
+	void Update () {
+		if (GameManager.gameState == GameManager.playingGame) {
+			moveOnlyInGame();	
+		} 
+		else if (GameManager.gameState == GameManager.waitingForConnections) {
+			moveOnlyInWaiting();
+		}
+
+
+		if(Input.GetKey(KeyCode.Alpha1))
 		{
 			GetComponent<PlayerSyncColor>().changeRealColor(colorArray[0]);
 		}
@@ -46,6 +60,23 @@ public class MovePlayer : MonoBehaviour {
 		else if(Input.GetKey(KeyCode.Alpha5))
 		{
 			GetComponent<PlayerSyncColor>().changeRealColor(colorArray[4]);
+		}
+		else if(Input.GetKeyDown(KeyCode.N))
+		{
+			GameObject[] allplayers = GameObject.FindGameObjectsWithTag("SomePlayer");
+			Debug.Log ("players (by 'n'): ");
+			for (int i = 0; i < allplayers.Length; i++) {
+				//Debug.Log ("name: " + allplayers[i].GetComponent<PlayerSyncName>().getPlayerName());
+				//Debug.Log (allplayers[i].name);
+				Debug.Log (allplayers[i].GetComponent<PlayerSyncName>().getPlayerName());
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.D))
+		{
+			GameObject[] allplayers = GameObject.FindGameObjectsWithTag("SomePlayer");
+			for (int i = 0; i < allplayers.Length; i++) {
+				allplayers[i].GetComponent<NetworkSetup>().dispNetId();
+			}
 		}
 	}
 }

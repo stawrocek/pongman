@@ -7,6 +7,19 @@ public class GameManager : MonoBehaviour {
 	static public int connectionType = 0;
 
 	static public string userName = "Unknown";
+	static public int maximumNumberOfPlayersConnected = -1;
+	static public int connectedPlayers=0;
+
+	static public string gameState;
+	static public string waitingForConnections="WAITING";
+	static public string playingGame="GAME";
+
+	static public void setGameState(string gs){
+		gameState = gs;
+	}
+
+	static public string serverIP;
+	static public int serverPort=4444;
 
 	static public void setServer(){
 		connectionType = server;

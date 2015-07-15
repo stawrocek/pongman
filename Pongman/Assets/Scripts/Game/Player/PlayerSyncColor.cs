@@ -3,9 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PlayerSyncColor : NetworkBehaviour {
-	
-	//[SyncVar]
-	//Color syncPlayerColor;
+
 	[SyncVar (hook = "syncColorChanged")]
 	Color syncPlayerColor;
 
@@ -27,7 +25,7 @@ public class PlayerSyncColor : NetworkBehaviour {
 	[Client]
 	protected virtual void syncColorChanged(Color c)
 	{
+		syncPlayerColor = c;
 		GetComponent<Renderer>().material.color = c;
 	}
-
 }
