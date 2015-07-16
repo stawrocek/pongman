@@ -20,6 +20,7 @@ public class NetworkSetup : NetworkBehaviour {
 		if (netId.Value == 4) {
 			transform.position = GameObject.Find("SpawnNorth").transform.position;
 		}
+		transform.Translate (0, 0.5f, 0);
 	}
 
 	// Use this for initialization

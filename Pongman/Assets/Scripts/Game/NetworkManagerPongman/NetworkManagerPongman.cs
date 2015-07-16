@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class NetworkManagerPongman : NetworkManager {
 	
 	//virtual methods
+	public GameObject ball;
 
 	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 	{
@@ -19,8 +20,13 @@ public class NetworkManagerPongman : NetworkManager {
 		NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
 		GameManager.connectedPlayers++;
+		if (GameManager.maximumNumberOfPlayersConnected == GameManager.connectedPlayers) {
+			Debug.Log ("start game!");
+			GameObject ballGo = (GameObject)GameObject.Instantiate(ball,
+			                    new Vector3(0, .5f, 0), Quaternion.identity);
+			NetworkServer.Spawn(ballGo);
+		}
 		Debug.Log ("NetworkManager::OnServerAddPlayer");
-		//think about it:
 		GameObject.Find ("Player(Clone)").GetComponent<GameStates>().RpcPlayerJustConnectedToServer (GameManager.maximumNumberOfPlayersConnected, GameManager.connectedPlayers);
 	}
 
