@@ -27,6 +27,7 @@ public class NetworkManagerPongman : NetworkManager {
 			NetworkServer.Spawn(ballGo);
 		}
 		Debug.Log ("NetworkManager::OnServerAddPlayer");
+		if (GameManager.connectedPlayers != 1)
 		GameObject.Find ("Player(Clone)").GetComponent<GameStates>().RpcPlayerJustConnectedToServer (GameManager.maximumNumberOfPlayersConnected, GameManager.connectedPlayers);
 	}
 

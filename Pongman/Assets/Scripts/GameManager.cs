@@ -14,6 +14,17 @@ public class GameManager : MonoBehaviour {
 	static public string waitingForConnections="WAITING";
 	static public string playingGame="GAME";
 
+	static public float moveSpeedX = 10;
+	static public float moveSpeedZ = 10;
+
+	static public void invertX(){
+		moveSpeedX *= -1;
+	}
+	
+	static public void invertZ(){
+		moveSpeedZ *= -1;
+	}
+
 	static public void setGameState(string gs){
 		gameState = gs;
 	}

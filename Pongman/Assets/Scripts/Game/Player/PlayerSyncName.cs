@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class PlayerSyncName : NetworkBehaviour {
 
 	[SyncVar (hook = "syncNameChanged")]
-	string syncPlayerName;
+	string syncPlayerName="";
 
 	public void changeRealName(string str){
 		TransmitName (str);

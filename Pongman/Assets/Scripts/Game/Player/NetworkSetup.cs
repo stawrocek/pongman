@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 public class NetworkSetup : NetworkBehaviour {
 
 	public int getID(){
-		Debug.Log ("value: " + ((int)netId.Value).ToString ());
+		//Debug.Log ("value: " + ((int)netId.Value).ToString ());
 		return (int)netId.Value;
 	}
 
@@ -15,17 +15,22 @@ public class NetworkSetup : NetworkBehaviour {
 
 		if (netId.Value == 1) {
 			transform.position = GameObject.Find("SpawnEast").transform.position;
+			//transform.localScale = new Vector3(1, 1, 5);
 		}
 		if (netId.Value == 2) {
 			transform.position = GameObject.Find("SpawnWest").transform.position;
+			//transform.localScale = new Vector3(1, 1, 5);
 		}
 		if (netId.Value == 3) {
 			transform.position = GameObject.Find("SpawnSouth").transform.position;
+			//transform.localScale = new Vector3(5, 1, 1);
 		}
 		if (netId.Value == 4) {
 			transform.position = GameObject.Find("SpawnNorth").transform.position;
+			//transform.localScale = new Vector3(1, 1, 5);
 		}
 		transform.Translate (0, 0.5f, 0);
+		transform.LookAt (new Vector3 (0, 0, 0));
 	}
 
 	// Use this for initialization

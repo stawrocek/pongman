@@ -38,38 +38,38 @@ public class MovePlayer : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			if(netID==1){
-				transform.Translate (0, 0, moveSpeed*Time.deltaTime);
+				transform.Translate (0, 0, moveSpeed*Time.deltaTime, Space.World);
 				camera.transform.Translate(0, 0, moveSpeed*Time.deltaTime, Space.World);
 			}
 			if(netID==2){
-				transform.Translate (0, 0, -moveSpeed*Time.deltaTime);
+				transform.Translate (0, 0, -moveSpeed*Time.deltaTime, Space.World);
 				camera.transform.Translate(0, 0, -moveSpeed*Time.deltaTime, Space.World);
 			}
 			if(netID==3){
-				transform.Translate (moveSpeed*Time.deltaTime, 0, 0);
+				transform.Translate (moveSpeed*Time.deltaTime, 0, 0, Space.World);
 				camera.transform.Translate(moveSpeed*Time.deltaTime, 0, 0, Space.World);
 			}
 			if(netID==4){
-				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0);
+				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0, Space.World);
 				camera.transform.Translate(-moveSpeed*Time.deltaTime, 0, 0, Space.World);
 			}
 		}
 		else if(Input.GetKey(KeyCode.RightArrow))
 		{
 			if(netID==1){
-				transform.Translate (0, 0, -moveSpeed*Time.deltaTime);
+				transform.Translate (0, 0, -moveSpeed*Time.deltaTime, Space.World);
 				camera.transform.Translate(0, 0, -moveSpeed*Time.deltaTime, Space.World);
 			}
 			if(netID==2){
-				transform.Translate (0, 0, moveSpeed*Time.deltaTime);
+				transform.Translate (0, 0, moveSpeed*Time.deltaTime, Space.World);
 				camera.transform.Translate(0, 0, moveSpeed*Time.deltaTime, Space.World);
 			}
 			if(netID==3){
-				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0);
+				transform.Translate (-moveSpeed*Time.deltaTime, 0, 0, Space.World);
 				camera.transform.Translate(-moveSpeed*Time.deltaTime, 0, 0, Space.World);
 			}
 			if(netID==4){
-				transform.Translate (moveSpeed*Time.deltaTime, 0, 0);
+				transform.Translate (moveSpeed*Time.deltaTime, 0, 0, Space.World);
 				camera.transform.Translate(moveSpeed*Time.deltaTime, 0, 0, Space.World);
 			}
 		}

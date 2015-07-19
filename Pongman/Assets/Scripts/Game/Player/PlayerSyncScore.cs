@@ -18,7 +18,7 @@ public class PlayerSyncScore : NetworkBehaviour {
 
 	public void addPoint(){
 		TransmitScore (syncPlayerScore + 1);
-		Debug.Log ("transmit: " + syncPlayerScore + 1);
+		//Debug.Log ("transmit: " + syncPlayerScore + 1);
 	}
 	
 	public int getPlayerScore(){
