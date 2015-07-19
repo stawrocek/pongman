@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class PlayerSyncScore : NetworkBehaviour {
-
 	[SyncVar (hook = "syncScoreChanged")]
 	int syncPlayerScore;
 
@@ -16,6 +15,11 @@ public class PlayerSyncScore : NetworkBehaviour {
 	public void changeRealScore(int scr){
 		TransmitScore (scr);
 	}
+
+	public void addPoint(){
+		TransmitScore (syncPlayerScore + 1);
+		Debug.Log ("transmit: " + syncPlayerScore + 1);
+	}
 	
 	public int getPlayerScore(){
 		return syncPlayerScore;
@@ -23,6 +27,9 @@ public class PlayerSyncScore : NetworkBehaviour {
 	
 	[Command]
 	void CmdProvideNewScoreToServer(int scr){
+		//if (!isLocalPlayer)
+		//	return;
+
 		syncPlayerScore = scr;
 		//GetComponent<Renderer>().material.color = color;
 	}
@@ -31,9 +38,9 @@ public class PlayerSyncScore : NetworkBehaviour {
 	void TransmitScore(int scr){
 		CmdProvideNewScoreToServer(scr);
 	}
-	
+
 	[Client]
-	protected virtual void syncScoreChanged(int scr)
+	void syncScoreChanged(int scr)
 	{
 		syncPlayerScore = scr;
 		//GetComponent<Renderer>().material.color = c;

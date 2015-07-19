@@ -61,6 +61,9 @@ public class GameStates : NetworkBehaviour {
 				camera.GetComponent<CameraScript>().setTrackingMode(true, (int)netId.Value);
 				//Debug.Log ("ehh netid= " + ((int)netId.Value).ToString());
 				GetComponent<MovePlayer>().setNetId((int)netId.Value);
+				if((int)netId.Value==1){
+					GetComponent<BallMove>().enabled=true;
+				}
 			}
 		}
 	}

@@ -27,7 +27,7 @@ public class PlayerSyncName : NetworkBehaviour {
 	}
 	
 	[Client]
-	protected virtual void syncNameChanged(string str)
+	void syncNameChanged(string str)
 	{
 		syncPlayerName = str;
 		//GetComponent<Renderer>().material.color = c;

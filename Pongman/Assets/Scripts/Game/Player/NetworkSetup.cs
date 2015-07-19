@@ -4,6 +4,11 @@ using UnityEngine.Networking;
 
 public class NetworkSetup : NetworkBehaviour {
 
+	public int getID(){
+		Debug.Log ("value: " + ((int)netId.Value).ToString ());
+		return (int)netId.Value;
+	}
+
 	public void translateToSpawn(){
 		if (!isLocalPlayer)
 			return;

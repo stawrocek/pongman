@@ -16,6 +16,8 @@ public class DisplayScoreboard : MonoBehaviour {
 	void OnGUI(){
 		if (GameManager.gameState == GameManager.playingGame) {
 			GameObject[] go = GameObject.FindGameObjectsWithTag("SomePlayer");
+			if(go.Length != 2 && go.Length != 4)return;
+
 			GUI.Label (new Rect(Screen.width - 200, 10, 200, 25), go[0].GetComponent<PlayerSyncName>().getPlayerName()+
 			           ": " + go[0].GetComponent<PlayerSyncScore>().getPlayerScore().ToString());
 			GUI.Label (new Rect(Screen.width - 200, 40, 200, 25), go[1].GetComponent<PlayerSyncName>().getPlayerName()+
