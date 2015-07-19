@@ -30,7 +30,6 @@ public class NetworkSetup : NetworkBehaviour {
 			//transform.localScale = new Vector3(1, 1, 5);
 		}
 		transform.Translate (0, 0.5f, 0);
-		transform.LookAt (new Vector3 (0, 0, 0));
 	}
 
 	// Use this for initialization
@@ -49,6 +48,13 @@ public class NetworkSetup : NetworkBehaviour {
 
 			//tutaj
 			//translateToSpawn();
+		}
+	}
+
+	void Update(){
+		if (GameManager.gameState == GameManager.playingGame) {
+
+			transform.LookAt (GameObject.Find ("Ball(Clone)").transform.position);
 		}
 	}
 

@@ -27,5 +27,7 @@ public class PlayerSyncColor : NetworkBehaviour {
 	{
 		syncPlayerColor = c;
 		GetComponent<Renderer>().material.color = c;
+		transform.GetChild(0).GetComponent<Renderer>().material.color = c;
+
 	}
 }
