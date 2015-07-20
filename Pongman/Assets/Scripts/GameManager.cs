@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 		gameState = gs;
 	}
 
-	static public string serverIP;
+	static public string serverIP="127.0.0.1";
 	static public int serverPort=4444;
 
 	static public void setServer(){

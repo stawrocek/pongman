@@ -64,5 +64,6 @@ public class NetworkManagerPongman : NetworkManager {
 			Debug.Log ("Client under construction for user " + GameManager.userName);
 			setupClient();
 		}
+		networkAddress = GameManager.serverIP;
 	}
 }
