@@ -43,11 +43,15 @@ public class NetworkManagerPongman : NetworkManager {
 	}
 
 	void setupHost(){
+		networkAddress = GameManager.serverIP;
 		StartHost ();
+		networkAddress = GameManager.serverIP;
 	}
 
 	void setupClient(){
+		networkAddress = GameManager.serverIP;
 		StartClient ();
+		networkAddress = GameManager.serverIP;
 	}
 
 	/*public override void OnStartClient(){
@@ -64,6 +68,5 @@ public class NetworkManagerPongman : NetworkManager {
 			Debug.Log ("Client under construction for user " + GameManager.userName);
 			setupClient();
 		}
-		networkAddress = GameManager.serverIP;
 	}
 }
